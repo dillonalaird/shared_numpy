@@ -5,7 +5,7 @@ This package provides two main items:
 
 1. A light wrapper around numpy arrays and a multiprocessing queue that allows you to
    create numpy arrays with shared memory and efficiently pass them to other processes.
-2. A backport of the Python 3.8's shared\_memory module that works for 3.6.
+2. A backport of the Python 3.8's shared\_memory module that works for 3.6 and 3.7.
 
 
 `examples/timing_comparison.py` runs a timing comparison between normal numpy arrays and
@@ -18,22 +18,17 @@ shared
 total time: 0.007848024368286133
 ```
 
-
-The clinic file posixshmem.c.h is currently built for Python 3.6. In order to build the
-shared\_memory module for other version of Python you can generate a new clinic file.
-More information on clinic files can be found [here](https://docs.python.org/3/howto/clinic.html)
-```
-python clinic.py posixshmem.c
-```
-which generates the clinic file, `clinic/posixshmem.c.h` and then run
-```
-python setup.py build_ext --inplace
-```
-to generate the shared object file.
-
-
-Issues
+Install
 ---
 
-Does not currently work with Python 3.7, stalls when running
-`examples/timing_comparison.py`.
+To install run `python setup.py build_ext --inplace`.
+
+Clinic
+---
+
+The clinic file (that gets generated under `shared_numpy/clinic/posixshmem.c.h`) is a
+generated file that gets automatically created when running `setup.py`. You can manually
+generate a clinic file for Python 3.6 by running
+`python shared_numpy/py36_clinic.py shared_numpy/posixshmem.c`
+and one for Python 3.7 by using `py37_clinic.py` instead. More information on clinic
+files can be found [here](https://docs.python.org/3/howto/clinic.html)
