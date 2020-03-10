@@ -88,7 +88,7 @@ class SharedMemory:
                         self._fd = _posixshmem.shm_open(
                             name,
                             self._flags,
-                            self._mode
+                            mode=self._mode
                         )
 
                     except FileExistsError:
@@ -99,7 +99,7 @@ class SharedMemory:
                 self._fd = _posixshmem.shm_open(
                     name,
                     self._flags,
-                    self._mode
+                    mode=self._mode
                 )
 
                 self._name = name
