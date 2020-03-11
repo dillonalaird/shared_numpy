@@ -26,15 +26,16 @@ def f_snp(q):
 def run(q, f):
     p = mp.Process(target=f, args=(q,))
     p.start()
-    out = True
     start = time.time()
-    while out is not None:
+    while True:
         out = q.get()
         if out is not None:
             # print(f"obtained array {out[0, 0]}")
             if f.__name__ == "f_snp":
                 out.close()
                 out.unlink()
+        else:
+            break
 
     p.join()
     end = time.time()
