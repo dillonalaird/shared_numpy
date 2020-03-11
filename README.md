@@ -23,7 +23,7 @@ add them to a queue.
 
 
 ```python
-imoprt shared_numpy as snp
+import shared_numpy as snp
 
 def f(q):
     for i in range(10):
