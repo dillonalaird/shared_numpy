@@ -37,7 +37,6 @@ def run(q, f):
                 out.unlink()
 
     p.join()
-    p.join()
     end = time.time()
     total = end - start
     print(f"total time: {total}")
