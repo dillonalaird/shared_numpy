@@ -7,6 +7,9 @@ posixshmem - A Python extension that provides shm_open() and shm_unlink()
 #include <Python.h>
 #include "structmember.h"
 
+int shm_open(const char *, int, ...);
+int shm_unlink(const char *);
+
 // for shm_open() and shm_unlink()
 #ifdef HAVE_SYS_MMAN_H
 #include <sys/mman.h>
